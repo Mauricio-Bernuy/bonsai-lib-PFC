@@ -85,6 +85,7 @@ def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,
 
 	else:
 		#single GPU mode
+		print(f"{bonsai_bin} {'--log' if log else ''} --{mode} {str(nPart_or_file)} --snapname {snap_prefix} --snapiter {str(dSnap)} -T {str(T)} -dt {str(dt)} --eps {str(eps)}")
 		if call([bonsai_bin,'--log' if log else '','--'+mode,str(nPart_or_file),'--snapname',snap_prefix,'--snapiter',str(dSnap),'-T',str(T),'-dt',str(dt),'--eps',str(eps),]):
 			return "Error"
 		else:

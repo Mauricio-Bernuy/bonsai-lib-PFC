@@ -25,7 +25,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 from math import pi, cos, sin
-
+import functools
 
 class Stars(object):
 	""" 
@@ -73,7 +73,7 @@ class Stars(object):
 		#nTot,nDim,nGas,nDark,nStar = struct.unpack('iiiii',tfile.read(20))
 		nTot,dim,nGas,nDark,self.nStars,temp = struct.unpack('iiiiii',tfile.read(24)) #c structures pad to multiple of 8 bytes?
 		#print self.time
-		print 'Loading Header (%s)... time:%f, nTot:%i, nStar:%i' % (tipsyFilePath, self.time, nTot, self.nStars)
+		print('Loading Header (%s)... time:%f, nTot:%i, nStar:%i' % (tipsyFilePath, self.time, nTot, self.nStars))
 
 		#pass the file pointer to this function for each particle
 		self.mass = np.zeros((self.nStars),dtype=np.float32)
@@ -86,6 +86,7 @@ class Stars(object):
 			#3D
 			for i in range(self.nStars):
 				mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_ID = struct.unpack('f3f3f3fi',tfile.read(44))
+				print(mass,"\n",x1,"\n",x2,"\n",x3,"\n",v1,"\n",v2,"\n",v3,"\n",metals,"\n",tform_IGNORED,"\n",eps_IGNORED,"\n",phi_ID)
 				self.pos[i,:] = (x1,x2,x3)
 				self.vel[i,:] = (v1,v2,v3)
 				self.mass[i] = mass
@@ -239,7 +240,7 @@ class Stars(object):
 		#nTot,nDim,nGas,nDark,nStar = struct.unpack('iiiii',tfile.read(20))
 		nTot,dim,nGas,nDark,nStars_added,temp = struct.unpack('iiiiii',tfile.read(24)) #c structures pad to multiple of 8 bytes?
 		#print self.time
-		print 'Loading Header (%s)... time:%f, nTot:%i, nStar:%i' % (tipsyFilePath, time, nTot, nStars_added)
+		print('Loading Header (%s)... time:%f, nTot:%i, nStar:%i' % (tipsyFilePath, time, nTot, nStars_added))
 
 		#pass the file pointer to this function for each particle
 		self.mass.resize((self.nStars+nStars_added,)) #= np.zeros((self.nStars),dtype=np.float32)
@@ -270,7 +271,7 @@ class Stars(object):
 
 		@returns	None
 		"""
-		print "Writing..."
+		print("Writing...")
 		tfile = open(tipsyFilePath,'wb')
 
 		#time first
@@ -279,12 +280,11 @@ class Stars(object):
 		tfile.write(struct.pack('iiiiii',self.nStars,3,0,0,self.nStars,0)) # nTot,dim,nGas,nDark,self.nStars,temp
 
 		for i in range(self.nStars):
-			 tfile.write(struct.pack('f3f3f3fi',self.mass[i],self.pos[i,0],self.pos[i,1],self.pos[i,2],self.vel[i,0],self.vel[i,1],self.vel[i,2],0.0,0.0,0.0,i))
-			 #mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_ID
-		
+			tfile.write(struct.pack('f3f3f3fi',self.mass[i],self.pos[i,0],self.pos[i,1],self.pos[i,2],self.vel[i,0],self.vel[i,1],self.vel[i,2],0.0,0.0,0.0,i))
+			#mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_ID
 		tfile.close()
 
-		print "Saved: "+tipsyFilePath
+		print("Saved: "+tipsyFilePath)
 
 	def save_figure(self, figure_name, lim = .8, figsize = 10, pointsize = .1, nRed = None, elevAng=45, rotAng=0, IDs=None):
 		"""
@@ -301,33 +301,40 @@ class Stars(object):
 
 		@returns	path to file just saved (string)
 		"""
-
+		
 		fig = plt.figure(figsize=(figsize,figsize))
-		ax = fig.gca(projection='3d')
-		ax.view_init(elev=elevAng, azim=rotAng)
+		ax = fig.add_subplot(projection='3d')
+		ax.set_proj_type('persp', focal_length=0.2) 
+		
+		# ax.view_init(elev=elevAng, azim=rotAng)
+		
 		if nRed is not None:
-			redIdx = np.where(self.IDs < nRed)[0]
-			blueIdx = np.where(self.IDs >= nRed)[0]
-			ax.plot(self.pos[redIdx,0],self.pos[redIdx,1],self.pos[redIdx,2],'r.',markersize=pointsize)
-			ax.plot(self.pos[blueIdx,0],self.pos[blueIdx,1],self.pos[blueIdx,2],'b.',markersize=pointsize)
+			print("PRINTING REDS", nRed)
+			# redIdx = np.where(self.IDs < nRed)[0]
+			# blueIdx = np.where(self.IDs >= nRed)[0]
+			# print(redIdx)
+			print(len(self.pos[0:nRed,0]),len(self.pos[nRed:self.nStars,0]))			
+			ax.scatter3D(self.pos[0:nRed,0],self.pos[0:nRed,1],self.pos[0:nRed,2],color = "red",s=pointsize**2)
+			ax.scatter3D(self.pos[nRed:self.nStars,0],self.pos[nRed:self.nStars,1],self.pos[nRed:self.nStars,2],color = "blue",s=pointsize**2)
 		elif IDs is not None:	
 			#plot only IDs if passed
 			sorted_ids = np.argsort(self.IDs)
 			selected_ids_idx = sorted_ids[IDs]
-			ax.plot(self.pos[selected_ids_idx,0],self.pos[selected_ids_idx,1],self.pos[selected_ids_idx,2],'k.',markersize=pointsize)
+			ax.scatter3D(self.pos[selected_ids_idx,0],self.pos[selected_ids_idx,1],self.pos[selected_ids_idx,2],'k.',s=pointsize**2)
 		else:
-			ax.plot(self.pos[:,0],self.pos[:,1],self.pos[:,2],'k.',markersize=pointsize)
-
+			ax.scatter3D(self.pos[:,0],self.pos[:,1],self.pos[:,2],color = "blue",s=pointsize**2)
+			# ax.plot(self.pos[:,0],self.pos[:,1],self.pos[:,2],'k.',markersize=pointsize)
 
 		ax.set_xlim(-lim,lim)
 		ax.set_ylim(-lim,lim)
 		ax.set_zlim(-lim,lim)
-		ax.set_axis_off()
+		# ax.set_axis_off()
 		#ax.set_axis_bgcolor('black')
 		plt.title('time: %f'%self.time)#,color='white')
 		plt.tight_layout()
 		fig_path_string = figure_name + '.png'
 		plt.savefig(fig_path_string)
+		plt.close()
 		return fig_path_string
 
 def make_mp4(png_prefix, mp4_prefix, frame_rate = 20, bit_rate = '8000k', codec = 'libx264'):
@@ -351,7 +358,7 @@ def make_mp4(png_prefix, mp4_prefix, frame_rate = 20, bit_rate = '8000k', codec 
 		'-vcodec',codec,
 		'-b',bit_rate,
 		mp4_prefix + '.mp4'])
-	print "Saved: " + mp4_prefix + ".mp4"
+	print("Saved: " + mp4_prefix + ".mp4")
 
 
 def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nRed = None, elevAng = 45, IDs = None):
@@ -378,8 +385,9 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 
 	#comparitor for file name sorting
 	def cmp(x,y):
-		x_num = float(x.lstrip(tipsy_prefix+'_'))
-		y_num = float(y.lstrip(tipsy_prefix+'_'))
+		print(x," and ",y)
+		x_num = float(x.lstrip(tipsy_prefix+'_').rstrip("-0"))
+		y_num = float(y.lstrip(tipsy_prefix+'_').rstrip("-0"))
 		if x_num > y_num:
 			return 1
 		elif x_num < y_num:
@@ -388,7 +396,9 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 			return 0
 	
 	tipsy_list = glob.glob(tipsy_prefix+"*")
-	tipsy_list.sort(cmp)
+	# tipsy_list.sort(cmp)
+	tipsy_list = sorted(tipsy_list, key=functools.cmp_to_key(cmp))
+	# >>> sorted_l = sorted(l, cmp=lambda x, y: x ** 3 - y ** 3) # Sort with cmp
 
 	if figures_prefix is not None:
 		#run parallel processes to plot figures
@@ -420,7 +430,7 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 	else:
 		stars_array = []
 		for tipsy_file in tipsy_list:
-			stars_array[-1] = Stars(tipsy_file)
+			stars_array.append(Stars(tipsy_file))
 		return stars_array
 
 def txt2tipsy(nbody_file,tipsy_file):
@@ -447,7 +457,7 @@ def txt2tipsy(nbody_file,tipsy_file):
 	eps2 = None
 
 	#read header
-	print "Reading..."
+	print("Reading...")
 
 	nbfile = open(nbody_file,'r')
 	header_line = nbfile.readline().rstrip()
@@ -466,10 +476,10 @@ def txt2tipsy(nbody_file,tipsy_file):
 	nStars = int(nStars)
 
 	if nStars != star_data.shape[0]:
-		print "Warning: number of stars in file (%i) does not match number in header (%i)..." % (star_data.shape[0],nStars)
+		print("Warning: number of stars in file (%i) does not match number in header (%i)..." % (star_data.shape[0],nStars))
 		nStars = star_data.shape[0]
 
-	print "Writing..."
+	print("Writing...")
 	tfile = open(tipsy_file,'wb')
 
 	#time first
@@ -478,8 +488,8 @@ def txt2tipsy(nbody_file,tipsy_file):
 	tfile.write(struct.pack('iiiiii',nStars,3,0,0,nStars,0)) # nTot,dim,nGas,nDark,self.nStars,temp
 
 	for i in range(nStars):
-		 tfile.write(struct.pack('f3f3f3fi',star_data[i,0],star_data[i,1],star_data[i,2],star_data[i,3],star_data[i,4],star_data[i,5],star_data[i,6],0.0,0.0,0.0,i))
-		 #mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_IGNORED
+		tfile.write(struct.pack('f3f3f3fi',star_data[i,0],star_data[i,1],star_data[i,2],star_data[i,3],star_data[i,4],star_data[i,5],star_data[i,6],0.0,0.0,0.0,i))
+		#mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_IGNORED
 	
 	tfile.close()
 

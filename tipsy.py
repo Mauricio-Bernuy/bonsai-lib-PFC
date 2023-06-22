@@ -26,6 +26,9 @@ from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 from math import pi, cos, sin
 import functools
+import os
+
+import ray # run in parallel
 
 class Stars(object):
 	""" 
@@ -85,16 +88,48 @@ class Stars(object):
 		if dim == 3:
 			#3D
 			for i in range(self.nStars):
-				mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_ID = struct.unpack('f3f3f3fi',tfile.read(44))
-				print(mass,"\n",x1,"\n",x2,"\n",x3,"\n",v1,"\n",v2,"\n",v3,"\n",metals,"\n",tform_IGNORED,"\n",eps_IGNORED,"\n",phi_ID)
+				mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,_ID,_ = struct.unpack('f3f3f2f2i',tfile.read(44))
+				# mass,x1,x2,x3,v1,v2,v3,metals,tform_IGNORED,eps_IGNORED,phi_ID = struct.unpack('f3f3f3fi',tfile.read(44))
+				# print(mass,"\n",x1,"\n",x2,"\n",x3,"\n",v1,"\n",v2,"\n",v3,"\n",metals,"\n",tform_IGNORED,"\n",eps_IGNORED,"\n",phi_ID)
 				self.pos[i,:] = (x1,x2,x3)
 				self.vel[i,:] = (v1,v2,v3)
 				self.mass[i] = mass
 				# self.metals[i] = metals
-				self.IDs[i] = phi_ID
+				# self.IDs[i] = phi_ID
+				self.IDs[i] = _ID
 
 		else:
 			raise Exception("%iD not supported"%dim)
+
+
+    # struct star_particle {
+    #     Real mass;
+    #     Real pos[MAXDIM];
+    #     Real vel[MAXDIM];
+    #     Real metals ;
+    #     Real tform ;
+    #     Real eps;
+    #     int phi ;
+    # public:
+    #   int  getID() const {return phi;}
+    #   void setID(int ID) {  phi = ID; }
+    # } ;
+
+    # struct star_particleV2 {
+    #     Real mass;
+    #     Real pos[MAXDIM];
+    #     Real vel[MAXDIM];
+    #     Real metals ;
+    #     Real tform ;
+    # private:
+    #   int _ID[2]; //replaces phi and eps
+    # public:
+    #   unsigned long long  getID() const {return *(unsigned  long long*)_ID;}
+    #   void setID(unsigned long long ID) { *(unsigned  long long*)_ID = ID; }
+    #   int getID_V1() const {return _ID[1];}
+    # //    Real eps;
+    # //    int ID; //replaces phi and eps
+    # } ;
 
 	# Probably doesn't work right, taken out
 	# def scale(self,factor, invarient = True):
@@ -310,12 +345,10 @@ class Stars(object):
 		
 		if nRed is not None:
 			print("PRINTING REDS", nRed)
-			# redIdx = np.where(self.IDs < nRed)[0]
-			# blueIdx = np.where(self.IDs >= nRed)[0]
-			# print(redIdx)
-			print(len(self.pos[0:nRed,0]),len(self.pos[nRed:self.nStars,0]))			
-			ax.scatter3D(self.pos[0:nRed,0],self.pos[0:nRed,1],self.pos[0:nRed,2],color = "red",s=pointsize**2)
-			ax.scatter3D(self.pos[nRed:self.nStars,0],self.pos[nRed:self.nStars,1],self.pos[nRed:self.nStars,2],color = "blue",s=pointsize**2)
+			redIdx = np.where(self.IDs < nRed)[0]
+			blueIdx = np.where(self.IDs >= nRed)[0]
+			ax.scatter3D(self.pos[redIdx,0],self.pos[redIdx,1],self.pos[redIdx,2],color = "red",s=pointsize**2)
+			ax.scatter3D(self.pos[blueIdx,0],self.pos[blueIdx,1],self.pos[blueIdx,2],color = "blue",s=pointsize**2)
 		elif IDs is not None:	
 			#plot only IDs if passed
 			sorted_ids = np.argsort(self.IDs)
@@ -352,6 +385,14 @@ def make_mp4(png_prefix, mp4_prefix, frame_rate = 20, bit_rate = '8000k', codec 
 
 	@returns	None
 	"""
+
+	counter = 0
+	filename = mp4_prefix + "_{}.mp4"
+	while os.path.isfile(filename.format(counter)):
+		counter += 1
+	filename = mp4_prefix + "_{}"
+	mp4_prefix = filename.format(counter)
+
 	call(['ffmpeg','-y',
 		'-r', str(frame_rate),
 		'-i', png_prefix + '%d.png',
@@ -359,7 +400,6 @@ def make_mp4(png_prefix, mp4_prefix, frame_rate = 20, bit_rate = '8000k', codec 
 		'-b',bit_rate,
 		mp4_prefix + '.mp4'])
 	print("Saved: " + mp4_prefix + ".mp4")
-
 
 def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nRed = None, elevAng = 45, IDs = None):
 	'''
@@ -396,24 +436,25 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 			return 0
 	
 	tipsy_list = glob.glob(tipsy_prefix+"*")
-	# tipsy_list.sort(cmp)
 	tipsy_list = sorted(tipsy_list, key=functools.cmp_to_key(cmp))
-	# >>> sorted_l = sorted(l, cmp=lambda x, y: x ** 3 - y ** 3) # Sort with cmp
 
 	if figures_prefix is not None:
 		#run parallel processes to plot figures
 
 		#parallel function definition
-		# def read_and_plot(tipsy_file,index,lim,nRed):
-		# 	temp_stars = Stars(tipsy_file)
-		# 	temp_stars.save_figure(figures_prefix+str(index),lim=lim,nRed=nRed)
-
-#		procs = [] #array of proceedures
-		index = 0
-		for tipsy_file in tipsy_list:
-			#read_and_plot(tipsy_file,index,lim,nRed)
+		@ray.remote
+		def read_and_plot(tipsy_file,index,lim,pointsize,nRed,elevAng,IDs):
 			temp_stars = Stars(tipsy_file)
 			temp_stars.save_figure(figures_prefix+str(index),lim=lim,pointsize=pointsize, nRed=nRed, elevAng = elevAng, IDs = IDs)
+			return 1
+
+
+		tasks = [] #array of proceedures
+		index = 0
+		for tipsy_file in tipsy_list:
+			tasks.append(read_and_plot.remote(tipsy_file,index,lim,pointsize,nRed,elevAng,IDs))
+			# temp_stars = Stars(tipsy_file)
+			# temp_stars.save_figure(figures_prefix+str(index),lim=lim,pointsize=pointsize, nRed=nRed, elevAng = elevAng, IDs = IDs)
 #			procs.append(Process(target=read_and_plot,args=(tipsy_file,index,lim,nRed)))
 #			procs[-1].start()
 			index +=1
@@ -422,7 +463,9 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 			# 		procs[i].join()
 			# 	#wait for nThreads to finish
 			# 	procs = []
-
+		print("All tasks created!")
+		ray.get(tasks)
+		print("Tasks finished!")
 
 		# for i in range(int(self.dim.z)):
 		# 	procs[i].join()

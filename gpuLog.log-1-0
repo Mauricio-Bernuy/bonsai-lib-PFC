@@ -1,28 +1,479 @@
 PROC-00000 Start execution
-PROC-00000 0	0	Sorting	1.55238
-PROC-00000 1	1	Data-reordering	1.3897
-PROC-00000 2	9	Predict	0.098304
-PROC-00000 3	0	Sorting	1.10678
-PROC-00000 4	1	Data-reordering	0.086016
-PROC-00000 5	2	Tree-construction	0.806976
-PROC-00000 6	11	Memory	1.03632
-PROC-00000 7	3	Compute-properties	0.2816
-PROC-00000 8	10	setActiveGrpsFunc	0.001984
-PROC-00000 INT Interaction at (rank= 0 ) iter: 0	direct: 52342152	appr: 64675171	avg dir: 805.263855	avg appr: 995.002625
-PROC-00000 APPTIME [0]: Iter: 0	0.003479 	n: 65000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
-PROC-00000 9	8	Correct	0.171008
-PROC-00000 10	7	Energy	0.069632
-PROC-00000 TIME [00] TOTAL: 1.01303	 Grav: 0.003479 (GPUgrav 0 , LET Com: 0)	Build: 0.00365305	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.000483036
-PROC-00000 11	9	Predict	0.146432
-PROC-00000 12	0	Sorting	1.18579
-PROC-00000 13	1	Data-reordering	0.109568
-PROC-00000 14	2	Tree-construction	2.55914
-PROC-00000 15	11	Memory	0.087296
-PROC-00000 16	3	Compute-properties	0.504832
-PROC-00000 17	10	setActiveGrpsFunc	0.001024
-PROC-00000 INT Interaction at (rank= 0 ) iter: 1	direct: 139096677	appr: 144934580	avg dir: 2139.948730	avg appr: 2229.762695
-PROC-00000 APPTIME [0]: Iter: 1	0.00669193 	n: 65000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
-PROC-00000 18	8	Correct	0.188416
-PROC-00000 19	7	Energy	0.56832
-PROC-00000 TIME [00] TOTAL: 0.028502	 Grav: 0.00669193 (GPUgrav 0 , LET Com: 0)	Build: 0.00477004	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00190639
-PROC-00000 Finished total took: 1.34575
+PROC-00000 0	0	Sorting	8.19405
+PROC-00000 1	1	Data-reordering	43.4989
+PROC-00000 2	9	Predict	0.626688
+PROC-00000 3	4	Direct_gravity	8280.77
+PROC-00000 INT Interaction at (rank= 0 ) iter: 0	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 0	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 4	8	Correct	0.458752
+PROC-00000 5	7	Energy	0.37888
+PROC-00000 TIME [00] TOTAL: 8.50985	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00159812
+PROC-00000 6	9	Predict	0.607232
+PROC-00000 7	4	Direct_gravity	9288.97
+PROC-00000 INT Interaction at (rank= 0 ) iter: 1	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 1	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 8	8	Correct	0.44032
+PROC-00000 9	7	Energy	0.400384
+PROC-00000 TIME [00] TOTAL: 9.48765	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00250626
+PROC-00000 10	9	Predict	0.603136
+PROC-00000 11	4	Direct_gravity	9254.75
+PROC-00000 INT Interaction at (rank= 0 ) iter: 2	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 2	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 12	8	Correct	0.453632
+PROC-00000 13	7	Energy	0.364736
+PROC-00000 TIME [00] TOTAL: 9.45086	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00163412
+PROC-00000 14	9	Predict	0.60416
+PROC-00000 15	4	Direct_gravity	9420.88
+PROC-00000 INT Interaction at (rank= 0 ) iter: 3	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 3	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 16	8	Correct	0.429056
+PROC-00000 17	7	Energy	0.336896
+PROC-00000 TIME [00] TOTAL: 9.63745	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00153208
+PROC-00000 18	9	Predict	0.601088
+PROC-00000 19	4	Direct_gravity	9475.35
+PROC-00000 INT Interaction at (rank= 0 ) iter: 4	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 4	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 20	8	Correct	0.428032
+PROC-00000 21	7	Energy	1.03936
+PROC-00000 TIME [00] TOTAL: 9.68303	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00225806
+PROC-00000 22	9	Predict	0.602112
+PROC-00000 23	4	Direct_gravity	9350.74
+PROC-00000 INT Interaction at (rank= 0 ) iter: 5	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 5	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 24	8	Correct	0.436224
+PROC-00000 25	7	Energy	0.330784
+PROC-00000 TIME [00] TOTAL: 9.56906	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00163317
+PROC-00000 26	9	Predict	0.600064
+PROC-00000 27	4	Direct_gravity	9453.02
+PROC-00000 INT Interaction at (rank= 0 ) iter: 6	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 6	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 28	8	Correct	0.43008
+PROC-00000 29	7	Energy	0.332896
+PROC-00000 TIME [00] TOTAL: 9.64289	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00153494
+PROC-00000 30	9	Predict	0.603136
+PROC-00000 31	4	Direct_gravity	9434.8
+PROC-00000 INT Interaction at (rank= 0 ) iter: 7	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 7	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 32	8	Correct	0.437248
+PROC-00000 33	7	Energy	0.349056
+PROC-00000 TIME [00] TOTAL: 9.63359	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00156999
+PROC-00000 34	9	Predict	0.617472
+PROC-00000 35	4	Direct_gravity	9388.79
+PROC-00000 INT Interaction at (rank= 0 ) iter: 8	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 8	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 36	8	Correct	0.497664
+PROC-00000 37	7	Energy	0.379072
+PROC-00000 TIME [00] TOTAL: 9.5832	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00173712
+PROC-00000 38	9	Predict	0.60416
+PROC-00000 39	4	Direct_gravity	9357.36
+PROC-00000 INT Interaction at (rank= 0 ) iter: 9	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 9	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 40	8	Correct	0.4352
+PROC-00000 41	7	Energy	0.341728
+PROC-00000 TIME [00] TOTAL: 9.53897	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00155497
+PROC-00000 42	9	Predict	0.601088
+PROC-00000 43	4	Direct_gravity	9386.11
+PROC-00000 INT Interaction at (rank= 0 ) iter: 10	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 10	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 44	8	Correct	0.432128
+PROC-00000 45	7	Energy	0.331776
+PROC-00000 TIME [00] TOTAL: 9.57382	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00152802
+PROC-00000 46	9	Predict	0.601088
+PROC-00000 47	4	Direct_gravity	9429.64
+PROC-00000 INT Interaction at (rank= 0 ) iter: 11	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 11	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 48	8	Correct	0.470016
+PROC-00000 49	7	Energy	0.361472
+PROC-00000 TIME [00] TOTAL: 9.62711	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00163913
+PROC-00000 50	9	Predict	0.601088
+PROC-00000 51	4	Direct_gravity	9393.02
+PROC-00000 INT Interaction at (rank= 0 ) iter: 12	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 12	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 52	8	Correct	0.4352
+PROC-00000 53	7	Energy	0.345344
+PROC-00000 TIME [00] TOTAL: 9.57647	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00155497
+PROC-00000 54	9	Predict	0.60416
+PROC-00000 55	4	Direct_gravity	9407.04
+PROC-00000 INT Interaction at (rank= 0 ) iter: 13	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 13	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 56	8	Correct	0.49152
+PROC-00000 57	7	Energy	0.382144
+PROC-00000 TIME [00] TOTAL: 9.60326	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00170016
+PROC-00000 58	9	Predict	0.603136
+PROC-00000 59	4	Direct_gravity	9366.03
+PROC-00000 INT Interaction at (rank= 0 ) iter: 14	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 14	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 60	8	Correct	0.437248
+PROC-00000 61	7	Energy	0.365248
+PROC-00000 TIME [00] TOTAL: 9.56003	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00159311
+PROC-00000 62	9	Predict	0.601088
+PROC-00000 63	4	Direct_gravity	9424.95
+PROC-00000 INT Interaction at (rank= 0 ) iter: 15	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 15	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 64	8	Correct	0.431104
+PROC-00000 65	7	Energy	0.458752
+PROC-00000 TIME [00] TOTAL: 9.61716	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00168777
+PROC-00000 66	9	Predict	0.601216
+PROC-00000 67	4	Direct_gravity	9417.13
+PROC-00000 INT Interaction at (rank= 0 ) iter: 16	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 16	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 68	8	Correct	0.433152
+PROC-00000 69	7	Energy	0.332928
+PROC-00000 TIME [00] TOTAL: 9.60202	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00152612
+PROC-00000 70	9	Predict	0.615424
+PROC-00000 71	4	Direct_gravity	9376.18
+PROC-00000 INT Interaction at (rank= 0 ) iter: 17	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 17	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 72	8	Correct	0.446464
+PROC-00000 73	7	Energy	0.36864
+PROC-00000 TIME [00] TOTAL: 9.56392	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00170422
+PROC-00000 74	9	Predict	0.601408
+PROC-00000 75	4	Direct_gravity	9398.86
+PROC-00000 INT Interaction at (rank= 0 ) iter: 18	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 18	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 76	8	Correct	0.437248
+PROC-00000 77	7	Energy	0.364544
+PROC-00000 TIME [00] TOTAL: 9.5838	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00183201
+PROC-00000 78	9	Predict	0.602112
+PROC-00000 79	4	Direct_gravity	9389.35
+PROC-00000 INT Interaction at (rank= 0 ) iter: 19	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 19	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 80	8	Correct	0.43008
+PROC-00000 81	7	Energy	0.336704
+PROC-00000 TIME [00] TOTAL: 9.58713	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00156999
+PROC-00000 82	9	Predict	0.6144
+PROC-00000 83	4	Direct_gravity	9438.6
+PROC-00000 INT Interaction at (rank= 0 ) iter: 20	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 20	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 84	8	Correct	0.437248
+PROC-00000 85	7	Energy	0.461696
+PROC-00000 TIME [00] TOTAL: 9.65529	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00240183
+PROC-00000 86	9	Predict	0.60416
+PROC-00000 87	4	Direct_gravity	9418.33
+PROC-00000 INT Interaction at (rank= 0 ) iter: 21	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 21	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 88	8	Correct	0.44032
+PROC-00000 89	7	Energy	0.348288
+PROC-00000 TIME [00] TOTAL: 9.60293	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00160599
+PROC-00000 90	9	Predict	0.606208
+PROC-00000 91	4	Direct_gravity	9416.69
+PROC-00000 INT Interaction at (rank= 0 ) iter: 22	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 22	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 92	8	Correct	0.432128
+PROC-00000 93	7	Energy	0.331008
+PROC-00000 TIME [00] TOTAL: 9.59981	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00153232
+PROC-00000 94	9	Predict	0.60416
+PROC-00000 95	4	Direct_gravity	9491.86
+PROC-00000 INT Interaction at (rank= 0 ) iter: 23	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 23	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 96	8	Correct	0.425984
+PROC-00000 97	7	Energy	0.333824
+PROC-00000 TIME [00] TOTAL: 9.68204	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00154805
+PROC-00000 98	9	Predict	0.60416
+PROC-00000 99	4	Direct_gravity	9445.91
+PROC-00000 INT Interaction at (rank= 0 ) iter: 24	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 24	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 100	8	Correct	0.428032
+PROC-00000 101	7	Energy	0.333824
+PROC-00000 TIME [00] TOTAL: 9.67015	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0015521
+PROC-00000 102	9	Predict	0.601472
+PROC-00000 103	4	Direct_gravity	9471.94
+PROC-00000 INT Interaction at (rank= 0 ) iter: 25	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 25	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 104	8	Correct	0.434176
+PROC-00000 105	7	Energy	0.337056
+PROC-00000 TIME [00] TOTAL: 9.66172	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00159883
+PROC-00000 106	9	Predict	0.605504
+PROC-00000 107	4	Direct_gravity	9435.24
+PROC-00000 INT Interaction at (rank= 0 ) iter: 26	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 26	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 108	8	Correct	0.425984
+PROC-00000 109	7	Energy	0.33792
+PROC-00000 TIME [00] TOTAL: 9.61881	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00161982
+PROC-00000 110	9	Predict	0.611328
+PROC-00000 111	4	Direct_gravity	9443.7
+PROC-00000 INT Interaction at (rank= 0 ) iter: 27	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 27	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 112	8	Correct	0.427008
+PROC-00000 113	7	Energy	0.333824
+PROC-00000 TIME [00] TOTAL: 9.62459	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00159597
+PROC-00000 114	9	Predict	0.601088
+PROC-00000 115	4	Direct_gravity	9423.55
+PROC-00000 INT Interaction at (rank= 0 ) iter: 28	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 28	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 116	8	Correct	0.43008
+PROC-00000 117	7	Energy	0.331776
+PROC-00000 TIME [00] TOTAL: 9.61902	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00153327
+PROC-00000 118	9	Predict	0.600064
+PROC-00000 119	4	Direct_gravity	9445.36
+PROC-00000 INT Interaction at (rank= 0 ) iter: 29	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 29	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 120	8	Correct	0.439296
+PROC-00000 121	7	Energy	0.346432
+PROC-00000 TIME [00] TOTAL: 9.63401	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00164509
+PROC-00000 122	9	Predict	0.601088
+PROC-00000 123	4	Direct_gravity	9465.51
+PROC-00000 INT Interaction at (rank= 0 ) iter: 30	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 30	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 124	8	Correct	0.431104
+PROC-00000 125	7	Energy	0.344064
+PROC-00000 TIME [00] TOTAL: 9.65231	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00155187
+PROC-00000 126	9	Predict	0.633856
+PROC-00000 127	4	Direct_gravity	9442.61
+PROC-00000 INT Interaction at (rank= 0 ) iter: 31	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 31	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 128	8	Correct	0.434176
+PROC-00000 129	7	Energy	0.33184
+PROC-00000 TIME [00] TOTAL: 9.62762	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00182104
+PROC-00000 130	9	Predict	0.601088
+PROC-00000 131	4	Direct_gravity	9386.58
+PROC-00000 INT Interaction at (rank= 0 ) iter: 32	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 32	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 132	8	Correct	0.464896
+PROC-00000 133	7	Energy	0.422912
+PROC-00000 TIME [00] TOTAL: 19.6552	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0036931
+PROC-00000 134	9	Predict	0.603136
+PROC-00000 135	4	Direct_gravity	9405.03
+PROC-00000 INT Interaction at (rank= 0 ) iter: 33	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 33	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 136	8	Correct	0.429056
+PROC-00000 137	7	Energy	0.337888
+PROC-00000 TIME [00] TOTAL: 29.2449	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00524521
+PROC-00000 138	9	Predict	0.60928
+PROC-00000 139	4	Direct_gravity	9417.24
+PROC-00000 INT Interaction at (rank= 0 ) iter: 34	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 34	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 140	8	Correct	0.436224
+PROC-00000 141	7	Energy	0.338944
+PROC-00000 TIME [00] TOTAL: 38.8501	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00686836
+PROC-00000 142	9	Predict	0.601088
+PROC-00000 143	4	Direct_gravity	9427.5
+PROC-00000 INT Interaction at (rank= 0 ) iter: 35	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 35	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 144	8	Correct	0.433152
+PROC-00000 145	7	Energy	0.351232
+PROC-00000 TIME [00] TOTAL: 48.4673	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.00846219
+PROC-00000 146	9	Predict	0.601088
+PROC-00000 147	4	Direct_gravity	9452.77
+PROC-00000 INT Interaction at (rank= 0 ) iter: 36	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 36	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 148	8	Correct	0.48128
+PROC-00000 149	7	Energy	1.02093
+PROC-00000 TIME [00] TOTAL: 58.1075	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0107782
+PROC-00000 150	9	Predict	0.62976
+PROC-00000 151	4	Direct_gravity	9423.66
+PROC-00000 INT Interaction at (rank= 0 ) iter: 37	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 37	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 152	8	Correct	0.433152
+PROC-00000 153	7	Energy	0.33392
+PROC-00000 TIME [00] TOTAL: 67.7251	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0124042
+PROC-00000 154	9	Predict	0.60416
+PROC-00000 155	4	Direct_gravity	9385.27
+PROC-00000 INT Interaction at (rank= 0 ) iter: 38	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 38	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 156	8	Correct	0.432128
+PROC-00000 157	7	Energy	0.333216
+PROC-00000 TIME [00] TOTAL: 77.2949	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0139883
+PROC-00000 158	9	Predict	0.601088
+PROC-00000 159	4	Direct_gravity	9441.51
+PROC-00000 INT Interaction at (rank= 0 ) iter: 39	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 39	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 160	8	Correct	0.452608
+PROC-00000 161	7	Energy	0.35328
+PROC-00000 TIME [00] TOTAL: 86.9487	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0155933
+PROC-00000 162	9	Predict	0.62464
+PROC-00000 163	4	Direct_gravity	9397.71
+PROC-00000 INT Interaction at (rank= 0 ) iter: 40	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 40	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 164	8	Correct	0.439296
+PROC-00000 165	7	Energy	0.384
+PROC-00000 TIME [00] TOTAL: 96.5272	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0172644
+PROC-00000 166	9	Predict	0.887808
+PROC-00000 167	4	Direct_gravity	9585.42
+PROC-00000 INT Interaction at (rank= 0 ) iter: 41	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 41	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 168	8	Correct	0.433152
+PROC-00000 169	7	Energy	0.34816
+PROC-00000 TIME [00] TOTAL: 106.325	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0193202
+PROC-00000 170	9	Predict	0.60416
+PROC-00000 171	4	Direct_gravity	9559.13
+PROC-00000 INT Interaction at (rank= 0 ) iter: 42	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 42	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 172	8	Correct	0.47616
+PROC-00000 173	7	Energy	0.343072
+PROC-00000 TIME [00] TOTAL: 116.078	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0210104
+PROC-00000 174	9	Predict	0.605216
+PROC-00000 175	4	Direct_gravity	9510.51
+PROC-00000 INT Interaction at (rank= 0 ) iter: 43	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 43	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 176	8	Correct	0.434176
+PROC-00000 177	7	Energy	0.508032
+PROC-00000 TIME [00] TOTAL: 125.781	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0227752
+PROC-00000 178	9	Predict	0.600064
+PROC-00000 179	4	Direct_gravity	9510.71
+PROC-00000 INT Interaction at (rank= 0 ) iter: 44	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 44	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 180	8	Correct	0.431104
+PROC-00000 181	7	Energy	0.340736
+PROC-00000 TIME [00] TOTAL: 135.495	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0243251
+PROC-00000 182	9	Predict	0.60416
+PROC-00000 183	4	Direct_gravity	9490.7
+PROC-00000 INT Interaction at (rank= 0 ) iter: 45	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 45	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 184	8	Correct	0.436224
+PROC-00000 185	7	Energy	0.346272
+PROC-00000 TIME [00] TOTAL: 145.173	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0261452
+PROC-00000 186	9	Predict	0.625664
+PROC-00000 187	4	Direct_gravity	9424.4
+PROC-00000 INT Interaction at (rank= 0 ) iter: 46	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 46	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 188	8	Correct	0.44544
+PROC-00000 189	7	Energy	0.373888
+PROC-00000 TIME [00] TOTAL: 154.819	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.027966
+PROC-00000 190	9	Predict	0.602112
+PROC-00000 191	4	Direct_gravity	9474.74
+PROC-00000 INT Interaction at (rank= 0 ) iter: 47	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 47	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 192	8	Correct	0.44544
+PROC-00000 193	7	Energy	0.776192
+PROC-00000 TIME [00] TOTAL: 164.499	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0303071
+PROC-00000 194	9	Predict	0.59904
+PROC-00000 195	4	Direct_gravity	9375.63
+PROC-00000 INT Interaction at (rank= 0 ) iter: 48	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 48	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 196	8	Correct	0.428032
+PROC-00000 197	7	Energy	0.33664
+PROC-00000 TIME [00] TOTAL: 174.078	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0318611
+PROC-00000 198	9	Predict	0.603136
+PROC-00000 199	4	Direct_gravity	9274.86
+PROC-00000 INT Interaction at (rank= 0 ) iter: 49	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 49	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 200	8	Correct	0.44544
+PROC-00000 201	7	Energy	0.37376
+PROC-00000 TIME [00] TOTAL: 183.548	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0334668
+PROC-00000 202	9	Predict	0.602112
+PROC-00000 203	4	Direct_gravity	9512.36
+PROC-00000 INT Interaction at (rank= 0 ) iter: 50	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 50	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 204	8	Correct	0.44032
+PROC-00000 205	7	Energy	0.362496
+PROC-00000 TIME [00] TOTAL: 193.249	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0350749
+PROC-00000 206	9	Predict	0.605184
+PROC-00000 207	4	Direct_gravity	9473.95
+PROC-00000 INT Interaction at (rank= 0 ) iter: 51	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 51	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 208	8	Correct	0.431104
+PROC-00000 209	7	Energy	0.338912
+PROC-00000 TIME [00] TOTAL: 202.935	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0368378
+PROC-00000 210	9	Predict	0.601088
+PROC-00000 211	4	Direct_gravity	9304.16
+PROC-00000 INT Interaction at (rank= 0 ) iter: 52	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 52	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 212	8	Correct	0.429056
+PROC-00000 213	7	Energy	0.34816
+PROC-00000 TIME [00] TOTAL: 212.457	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0384068
+PROC-00000 214	9	Predict	0.601088
+PROC-00000 215	4	Direct_gravity	9184.16
+PROC-00000 INT Interaction at (rank= 0 ) iter: 53	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 53	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 216	8	Correct	0.433152
+PROC-00000 217	7	Energy	0.370688
+PROC-00000 TIME [00] TOTAL: 221.902	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0400498
+PROC-00000 218	9	Predict	0.602112
+PROC-00000 219	4	Direct_gravity	9058.12
+PROC-00000 INT Interaction at (rank= 0 ) iter: 54	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 54	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 220	8	Correct	0.432128
+PROC-00000 221	7	Energy	0.579584
+PROC-00000 TIME [00] TOTAL: 231.154	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0418537
+PROC-00000 222	9	Predict	0.598016
+PROC-00000 223	4	Direct_gravity	9281.43
+PROC-00000 INT Interaction at (rank= 0 ) iter: 55	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 55	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 224	8	Correct	0.429056
+PROC-00000 225	7	Energy	0.34304
+PROC-00000 TIME [00] TOTAL: 240.659	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0433939
+PROC-00000 226	9	Predict	0.602112
+PROC-00000 227	4	Direct_gravity	9083.36
+PROC-00000 INT Interaction at (rank= 0 ) iter: 56	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 56	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 228	8	Correct	0.448512
+PROC-00000 229	7	Energy	0.369664
+PROC-00000 TIME [00] TOTAL: 249.985	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0450208
+PROC-00000 230	9	Predict	0.605184
+PROC-00000 231	4	Direct_gravity	9217.01
+PROC-00000 INT Interaction at (rank= 0 ) iter: 57	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 57	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 232	8	Correct	1.12435
+PROC-00000 233	7	Energy	0.35232
+PROC-00000 TIME [00] TOTAL: 259.394	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.047792
+PROC-00000 234	9	Predict	0.603136
+PROC-00000 235	4	Direct_gravity	9112.13
+PROC-00000 INT Interaction at (rank= 0 ) iter: 58	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 58	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 236	8	Correct	0.442368
+PROC-00000 237	7	Energy	0.339264
+PROC-00000 TIME [00] TOTAL: 268.733	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.049335
+PROC-00000 238	9	Predict	0.60928
+PROC-00000 239	4	Direct_gravity	9415.83
+PROC-00000 INT Interaction at (rank= 0 ) iter: 59	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 59	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 240	8	Correct	0.427008
+PROC-00000 241	7	Energy	0.33584
+PROC-00000 TIME [00] TOTAL: 278.344	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0508838
+PROC-00000 242	9	Predict	0.601088
+PROC-00000 243	4	Direct_gravity	9384.04
+PROC-00000 INT Interaction at (rank= 0 ) iter: 60	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 60	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 244	8	Correct	0.429056
+PROC-00000 245	7	Energy	0.3392
+PROC-00000 TIME [00] TOTAL: 287.924	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0524156
+PROC-00000 246	9	Predict	0.601088
+PROC-00000 247	4	Direct_gravity	9360.17
+PROC-00000 INT Interaction at (rank= 0 ) iter: 61	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 61	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 248	8	Correct	0.918528
+PROC-00000 249	7	Energy	0.370688
+PROC-00000 TIME [00] TOTAL: 297.481	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0552547
+PROC-00000 250	9	Predict	0.603136
+PROC-00000 251	4	Direct_gravity	9297.15
+PROC-00000 INT Interaction at (rank= 0 ) iter: 62	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 62	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 252	8	Correct	0.575488
+PROC-00000 253	7	Energy	0.340992
+PROC-00000 TIME [00] TOTAL: 306.981	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0570238
+PROC-00000 254	9	Predict	0.602112
+PROC-00000 255	4	Direct_gravity	9438.78
+PROC-00000 INT Interaction at (rank= 0 ) iter: 63	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 63	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 256	8	Correct	0.425984
+PROC-00000 257	7	Energy	1.1264
+PROC-00000 TIME [00] TOTAL: 316.644	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0601039
+PROC-00000 258	9	Predict	0.601088
+PROC-00000 259	4	Direct_gravity	9353.87
+PROC-00000 INT Interaction at (rank= 0 ) iter: 64	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 64	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 260	8	Correct	0.434176
+PROC-00000 261	7	Energy	0.338944
+PROC-00000 TIME [00] TOTAL: 326.179	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0616531
+PROC-00000 262	9	Predict	0.600064
+PROC-00000 263	4	Direct_gravity	9293.83
+PROC-00000 INT Interaction at (rank= 0 ) iter: 65	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 65	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 264	8	Correct	0.538624
+PROC-00000 265	7	Energy	0.396
+PROC-00000 TIME [00] TOTAL: 335.665	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0634382
+PROC-00000 266	9	Predict	0.600448
+PROC-00000 267	4	Direct_gravity	9455.42
+PROC-00000 INT Interaction at (rank= 0 ) iter: 66	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 66	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 268	8	Correct	0.457728
+PROC-00000 269	7	Energy	0.372736
+PROC-00000 TIME [00] TOTAL: 345.345	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0659764
+PROC-00000 270	9	Predict	0.601088
+PROC-00000 271	4	Direct_gravity	9409.13
+PROC-00000 INT Interaction at (rank= 0 ) iter: 67	direct: 0	appr: 0	avg dir: 0.000000	avg appr: 0.000000
+PROC-00000 APPTIME [0]: Iter: 67	0 	n: 1000000 EventTime: 0.000000  and 0.000000	Sum: 0.000000
+PROC-00000 272	8	Correct	0.493952
+PROC-00000 273	7	Energy	0.395456
+PROC-00000 TIME [00] TOTAL: 354.978	 Grav: 0 (GPUgrav 0 , LET Com: 0)	Build: 0	Domain: 0	 Wait: 0	domUp: 0	domEx: 0	domWait: 0	tPredCor: 0.0676851

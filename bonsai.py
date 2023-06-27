@@ -193,3 +193,77 @@ def parse_save_log(logfile="gpuLog.log-1-0", outfile="output"):
 		outfile.close()
 	
 	return total_timings
+
+# gpustat -cp --watch
+import time
+import subprocess
+from time import sleep
+from multiprocessing import Process
+from multiprocessing import shared_memory
+
+class measure_GPU(object):
+    def __init__(self, outfile = 'bonsai',  program_name = 'bonsai2_slowdust', poll_rate = 1):
+        self.FINISHED = shared_memory.ShareableList([False])
+        self.poll_rate = poll_rate
+        self.process = None
+        self.program_name = program_name
+        self.outfile = outfile
+     
+    def __enter__(self):
+        def GPU_task():
+            bench = {
+                'name':'', # GPU 0 Name 
+                'poll_rate':self.poll_rate, # GPU 0 Name 
+                'count':0, # poll (s)
+                'utilization.gpu':[], # utilization (%)
+                'memory.used':[], # mem used (MB)
+                'memory.total':0, # replaces construction and interaction (ms)
+                f'{self.program_name}_memory_usage':[], # time to build whole tree (ms)
+            }
+            while not self.FINISHED[0]:
+                st = time.time()
+                result = subprocess.run(['gpustat', '-cp','--json'], stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,shell=False)
+                a = result.stdout.decode('utf-8')
+                data = json.loads(a)
+                gpu_data = data['gpus'][0]
+                if bench['count'] == 0: 
+                    bench['name'] = gpu_data['name']
+                    bench['memory.total'] = gpu_data['memory.total']
+                bench['utilization.gpu'].append(gpu_data['utilization.gpu'])
+                bench['memory.used'].append(gpu_data['memory.used'])
+
+                found = False
+                for i in gpu_data['processes']:
+                    if i['command'] == self.program_name:
+                        bench[f'{self.program_name}_memory_usage'].append(i['gpu_memory_usage'])
+                        found = True
+                if not found:
+                    bench[f'{self.program_name}_memory_usage'].append(0)
+
+                bench['count'] += 1
+                et = time.time()
+                if self.poll_rate - (et-st) > 0:
+                    sleep(self.poll_rate - (et-st))
+
+            print(json.dumps(bench, indent=4))
+            if self.outfile: 
+                counter = 0
+                filename = self.outfile + "_" + "gpustat_" + self.program_name + "_{}.json"
+                while os.path.isfile(filename.format(counter)):
+                    counter += 1
+                filename = self.outfile + "_" + "gpustat_" + self.program_name + "_{}"
+                final_outfile = filename.format(counter)
+                print(f"output at {final_outfile}")
+
+                final_outfile = open(final_outfile + ".json","w+")
+                final_outfile.write(json.dumps(bench, indent=4))
+                final_outfile.close()
+	
+        self.process = Process(target=GPU_task)
+        self.process.start()
+
+ 
+    def __exit__(self, *args):
+        self.FINISHED[0]=True
+        self.process.join()
+        self.process.close()

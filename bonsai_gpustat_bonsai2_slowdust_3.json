@@ -1,0 +1,9 @@
+{
+    "name": "",
+    "poll_rate": 1,
+    "count": 0,
+    "utilization.gpu": [],
+    "memory.used": [],
+    "memory.total": 0,
+    "bonsai2_slowdust_memory_usage": []
+}

@@ -1,0 +1,15 @@
+{
+    "name": "NVIDIA GeForce GTX 1060 6GB",
+    "poll_rate": 1,
+    "count": 1,
+    "utilization.gpu": [
+        41
+    ],
+    "memory.used": [
+        493
+    ],
+    "memory.total": 6077,
+    "bonsai2_slowdust_memory_usage": [
+        0
+    ]
+}

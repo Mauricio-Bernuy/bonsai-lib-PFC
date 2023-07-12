@@ -1,0 +1,15 @@
+{
+    "Sorting": 0.00112947,
+    "Data-reordering": 0.000776192,
+    "Predict": 0.00032953599999999996,
+    "Direct_gravity": 0.008847263999999999,
+    "Tree-construction": 0,
+    "setActiveGrpsFunc": 0,
+    "Memory": 0,
+    "Grav:": 28712660000.0,
+    "Build:": 0.0,
+    "tPredCor:": 0.007634641,
+    "Correct": 0.002682304,
+    "Energy": 0.001914496,
+    "TOTAL:": 1.0572921400000002
+}

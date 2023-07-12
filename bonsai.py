@@ -39,7 +39,7 @@ def run_tipsy(tipsy_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin=None, mpi_n=0,
 
 
 
-def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,mpi_log_file,direct):
+def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, theta, bonsai_bin, mpi_n,mpi_log_file,direct,):
 	"""
 	Run Bonsai in mode "plummer", "sphere" or "infile"
 
@@ -49,12 +49,16 @@ def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,
 	@param[in]	nPart_or_file	number of particles per mpi process, or path to tipsy file for "infile" mode
 	@param[in]	snap_prefix		path prefix for snapshot (tipsy) files (simulation time will be appended)
 	@param[in]	T				total simulation time
-	@param[in]	dt				internal time step
-	@param[in] 	dSnap			interval at which snapshot files are generated
+	@param[in]	dt				icalc_accels_deltaterval at which snapshot files are generated
 	@param[in]	bonsai_bin		path to bonsai exe
 	@param[in]	mpi_n			specifies the number of mpi processes (0 = mpi not used)
 	@param[in]  mpi_log_file	single log file for mpi output (when mpi_n > 0)
 	@param[in]  direct			enables direct (N^2) computation
+	@param[in]  eps				smoothing amount 
+	@param[in]  theta			opening angle 
+	
+  float eps      = 0.05f;
+  float theta    = 0.75f;
 
 	@returns None
 	@sa run_tipsy(), run_plummer(), run_sphere()
@@ -76,7 +80,7 @@ def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,
 				 '--'+mode,str(nPart_or_file),
 				 '--snapname',snap_prefix,'--snapiter',str(dSnap),
 				 '-T',str(T),'-dt',str(dt),
-				 '--eps',str(eps),'--direct' if direct else '',
+				 '--eps',str(eps),'--theta',str(theta),'--direct' if direct else '',
 				]):
 			return "Error"
 		else:
@@ -84,14 +88,14 @@ def run_mode(mode,nPart_or_file,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,
 
 	else:
 		#single GPU mode
-		print(f"{bonsai_bin} {'--log' if log else ''} {'--direct' if direct else ''} --{mode} {str(nPart_or_file)} --snapname {snap_prefix} --snapiter {str(dSnap)} -T {str(T)} -dt {str(dt)} --eps {str(eps)}")
-		if call([bonsai_bin,'--log' if log else '','--direct' if direct else '','--'+mode,str(nPart_or_file),'--snapname',snap_prefix,'--snapiter',str(dSnap),'-T',str(T),'-dt',str(dt),'--eps',str(eps),]):
+		print(f"{bonsai_bin} {'--log' if log else ''} {'--direct' if direct else ''} --{mode} {str(nPart_or_file)} --snapname {snap_prefix} --snapiter {str(dSnap)} -T {str(T)} -dt {str(dt)} --eps {str(eps)} --theta {str(theta)}")
+		if call([bonsai_bin,'--log' if log else '','--direct' if direct else '','--'+mode,str(nPart_or_file),'--snapname',snap_prefix,'--snapiter',str(dSnap),'-T',str(T),'-dt',str(dt),'--eps',str(eps),'--theta',str(theta)]):
 			return "Error"
 		else:
 			return "Done"
 
 
-def run_plummer(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, bonsai_bin = None, mpi_n = 0, mpi_log_file = "mpiout.log",direct=None):
+def run_plummer(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, theta=0.75, bonsai_bin = None, mpi_n = 0, mpi_log_file = "mpiout.log",direct=None):
 	"""
 	Run a Bonsai's built in plummer model
 
@@ -104,13 +108,15 @@ def run_plummer(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, 
 	@param[in]	mpi_n			specifies the number of mpi processes (0 = mpi not used)
 	@param[in]	mpi_log_file	single log file for mpi output (when mpi_n > 0)
 	@param[in] direct			enables direct (N^2) computation
+	@param[in]  eps				smoothing amount 
+	@param[in]  theta			opening angle 
 
 	@returns	None
 	"""
-	run_mode("plummer",nParticles,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,mpi_log_file,direct)
+	run_mode("plummer",nParticles,snap_prefix,T,dt, dSnap, eps, theta, bonsai_bin, mpi_n,mpi_log_file,direct)
 
 
-def run_sphere(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, bonsai_bin = None, mpi_n = 0, mpi_log_file = "mpiout.log",direct=None):
+def run_sphere(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, theta=0.75, bonsai_bin = None, mpi_n = 0, mpi_log_file = "mpiout.log",direct=None):
 	"""
 	Run a Bonsai's built in plummer model
 
@@ -123,10 +129,12 @@ def run_sphere(nParticles,snap_prefix,T=2,dt=0.0625, dSnap = 0.0625, eps=0.05, b
 	@param[in]	mpi_n			specifies the number of mpi processes (0 = mpi not used)
 	@param[in]	mpi_log_file	single log file for mpi output (when mpi_n > 0)
 	@param[in] direct			enables direct (N^2) computation
+	@param[in]  eps				smoothing amount 
+	@param[in]  theta			opening angle 
 
 	@returns	None
 	"""
-	run_mode("sphere",nParticles,snap_prefix,T,dt, dSnap, eps, bonsai_bin, mpi_n,mpi_log_file,direct)
+	run_mode("sphere",nParticles,snap_prefix,T,dt, dSnap, eps, theta, bonsai_bin, mpi_n,mpi_log_file,direct)
 
 import json
 
@@ -267,3 +275,72 @@ class measure_GPU(object):
         self.FINISHED[0]=True
         self.process.join()
         self.process.close()
+
+import numpy as np
+
+def calc_accels_delta(nStars_ = 6500, theta_ = 0.75, T_ = 0.0625 * 4, adirect = []):
+	# ∆a/a = |atree − adirect|/|adirect|,
+	# output an array of deltas
+
+	data_prefix='data/plummer_snap_mpi'
+	bonsai_binary = "../Bonsai/build/bonsai2_slowdust" # after cmake tools build
+
+	# Bonsai config
+	step = 0.0625/1
+	nStars = nStars_ 
+	T_ = T_
+	eps = 0.0000001
+	dir_comp = False
+	theta = theta_
+
+	# sim 1, approximate 
+	run_plummer(nStars,data_prefix,bonsai_bin=bonsai_binary,T=T_,dt=step,dSnap=step,direct=dir_comp,eps=eps,theta=theta)
+
+	accelData = data_prefix + '-last-accel-data'
+	file = open(accelData)
+	atemp = []
+	cnt = 0 
+	for line in file:
+		tokens = line.strip().split(" ")
+		xyzw = [float(tokens[2]),float(tokens[3]),float(tokens[4]),float(tokens[5])]
+		atemp.append(xyzw)
+	
+	atree = np.array(atemp)
+	print(atree.shape)
+	file.close()
+
+	# sim 2, direct 
+	print(adirect)
+	if len(adirect) == 0:
+		# dir_comp = True
+		theta = 0
+		run_plummer(nStars,data_prefix,bonsai_bin=bonsai_binary,T=T_,dt=step,dSnap=step,direct=dir_comp,eps=eps,theta=theta)
+
+		accelData = data_prefix + '-last-accel-data'
+		file = open(accelData)
+		atemp = []
+		for line in file:
+			tokens = line.strip().split(" ")
+			xyzw = [float(tokens[2]),float(tokens[3]),float(tokens[4]),float(tokens[5])]
+			atemp.append(xyzw)
+		
+		adirect = np.array(atemp)
+		print(adirect.shape)
+		file.close()
+	else:
+		print("Using cached direct calculation")
+
+	adelta = np.sqrt(np.sum(np.square(atree-adirect),axis=1)) / np.sqrt(np.sum(np.square(adirect),axis=1))
+	
+	print(adelta.shape) 
+	
+	return adelta, atree, adirect
+
+def calc_space(adelta):
+	y = []
+	x =  np.geomspace(1, 1e-7, num=100)
+
+	for i in x:
+		y.append((adelta > i).sum() / adelta.shape[0])
+	y = np.array(y)
+	return x, y 

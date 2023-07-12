@@ -435,7 +435,7 @@ def read_tipsy(tipsy_prefix, figures_prefix = None, lim = .8, pointsize = .1, nR
 		else:
 			return 0
 	
-	tipsy_list = glob.glob(tipsy_prefix+"*")
+	tipsy_list = glob.glob(tipsy_prefix+"_*")
 	tipsy_list = sorted(tipsy_list, key=functools.cmp_to_key(cmp))
 
 	if figures_prefix is not None:
